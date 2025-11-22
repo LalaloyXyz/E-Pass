@@ -1,0 +1,108 @@
+body {
+    margin: 0;
+    padding: 0;
+    background: #000;
+    overflow: hidden;
+    font-family: sans-serif;
+}
+
+/* Video full screen */
+#videoContainer video {
+    width: 100vw;
+    height: 100vh;
+    object-fit: cover;
+}
+
+/* Header */
+.header {
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    padding: 20px;
+    color: white;
+    z-index: 50;
+    background: linear-gradient(180deg, rgba(0,0,0,.6), transparent);
+    display: flex;
+    justify-content: space-between;
+}
+
+.close-btn {
+    width: 40px; height: 40px;
+    border-radius: 50%;
+    background: rgba(255,255,255,.2);
+    color: #fff;
+    border: none;
+    font-size: 24px;
+}
+
+/* S-Toast slide down */
+.toast {
+    position: fixed;
+    top: -80px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: #34a853;
+    color: white;
+    padding: 14px 24px;
+    border-radius: 14px;
+    font-size: 16px;
+    font-weight: 500;
+    box-shadow: 0 6px 18px rgba(0,0,0,0.25);
+    opacity: 0;
+    z-index: 9999;
+    transition: top 0.45s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.45s ease;
+}
+
+.toast.show {
+    top: 20px;
+    opacity: 1;
+}
+
+.toast.error {
+    background: #d93025;
+}
+
+/* Staff Key Page */
+.verify-bg {
+    background: #f8f9fa;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+}
+
+.verify-container {
+    background: white;
+    padding: 40px;
+    border-radius: 12px;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+    width: 100%;
+    max-width: 400px;
+}
+
+.error {
+    background: #fce8e6;
+    color: #c5221f;
+    padding: 12px;
+    border-radius: 8px;
+    margin-bottom: 20px;
+    font-size: 14px;
+}
+
+.verify-container input[type="text"] {
+    width: 100%;
+    padding: 14px;
+    border: 1px solid #dadce0;
+    border-radius: 8px;
+    font-size: 16px;
+    margin-bottom: 20px;
+}
+
+.verify-container button {
+    width: 100%;
+    padding: 14px;
+    background: #1a73e8;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    font-size: 16px;
+}
