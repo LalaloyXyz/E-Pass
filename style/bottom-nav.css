@@ -14,7 +14,7 @@
   justify-content: space-evenly;
   align-items: center;
   z-index: 9999;
-  font-family: "Inter", system-ui, sans-serif;
+  font-family: 'Prompt', sans-serif;
 }
 
 .bottom-nav a {
@@ -26,7 +26,7 @@
   gap: 4px;
   padding: 8px 10px;
   border-radius: 10px;
-  transition: transform 0.2s ease;
+  transition: transform 0.2s ease, color 0.25s ease;
 }
 
 .bottom-nav a div {
@@ -45,11 +45,12 @@
   transform: translateY(-3px);
 }
 
+/* Active state - Mu-cha green */
 .bottom-nav a.active ion-icon {
-  color: #2077e5;
+  color: #8FBF72; /* Mu-cha main green */
   transform: scale(1.15);
 }
 
 .bottom-nav a.active div {
-  color: #2077e5 !important;
+  color: #8FBF72 !important;
 }

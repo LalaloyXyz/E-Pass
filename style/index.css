@@ -1,8 +1,8 @@
 html, body {
     height: 100%;
     margin: 0;
-    font-family: Arial, sans-serif;
-    background-image: url('../assets/img/39206451-artwork-digital-art-landscape-nature.jpg');
+    font-family: 'Prompt', sans-serif;
+    background-image: url('../assets/img/grass.png');
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
@@ -13,7 +13,7 @@ html, body {
 }
 
 .page-content {
-    flex: 1; /* take remaining height */
+    flex: 6; /* take remaining height */
     display: flex;
     flex-direction: column;
     justify-content: flex-end; /* push content to bottom */
@@ -88,7 +88,7 @@ li.not-done .activity-name {
     font-size: 20px;
     font-weight: 600;
     color: #fff;
-    background: linear-gradient(135deg, #4caf50, #66bb6a); 
+    background: #6E9F56; 
     border-radius: 16px;              
     box-shadow: 0 6px 20px rgba(0,0,0,0.25);
     text-align: center;
@@ -101,34 +101,10 @@ li.not-done .activity-name {
 .redeem-btn:hover {
     transform: translateY(-3px);
     box-shadow: 0 8px 25px rgba(0,0,0,0.3);
-    background: linear-gradient(135deg, #43a047, #81c784);
+    background: linear-gradient(135deg, #6E9F56, #8FBF72);
 }
 
 .redeem-btn:active {
     transform: translateY(0);
     box-shadow: 0 6px 20px rgba(0,0,0,0.25);
-}
-
-.logout-btn { 
-    position: fixed;           
-    top: 20px;                 
-    right: 20px;               
-    width: 40px; 
-    height: 40px;
-    border-radius: 50%;        
-    background: rgba(255,255,255,0.2);
-    color: #fff;
-    border: none;
-    font-size: 24px;
-    cursor: pointer;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    box-shadow: 0 4px 10px rgba(0,0,0,0.2);
-    transition: background 0.2s, transform 0.2s;
-}
-
-.logout-btn:hover {
-    background: rgba(255,255,255,0.35);
-    transform: scale(1.1);
 }

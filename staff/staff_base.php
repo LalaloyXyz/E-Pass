@@ -1,6 +1,6 @@
 <?php
-session_start();
-require "config/db.php";
+require "../lib/session.php";
+require "../config/db.php";
 
 if ($role != 'admin' && $role != 'staff') {
     header("Location: ../index.php");
@@ -35,12 +35,13 @@ if (!$isStaffVerified) {
 if (!$isStaffVerified):
 ?>
 <!DOCTYPE html>
-<html lang="th">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <title>Staff Key Verification</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="style/camScan.css">
+    <link href="https://fonts.googleapis.com/css2?family=Prompt:wght@300;400;500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../style/camScan.css">
 </head>
 <body class="verify-bg">
     <div class="verify-container">
@@ -67,7 +68,7 @@ endif;
 <title>สแกน QR Code</title>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<link rel="stylesheet" href="style/camScan.css">
+<link rel="stylesheet" href="../style/camScan.css">
 <script src="https://unpkg.com/html5-qrcode"></script>
 
 </head>
@@ -169,8 +170,19 @@ async function onScanSuccess(qrText) {
 
 function stopScanner() {
     scanning = false;
-    if (html5QrCode) {
-        html5QrCode.stop().finally(() => window.location.href = 'index.php');
+
+    if (html5QrCode && html5QrCode._isScanning) {
+
+        html5QrCode.stop(
+            () => {   // success
+                window.location.href = 'index.php';
+            },
+            (err) => { // fail
+                console.warn("Stop failed:", err);
+                window.location.href = 'index.php';
+            }
+        );
+
     } else {
         window.location.href = 'index.php';
     }

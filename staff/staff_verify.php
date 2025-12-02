@@ -2,7 +2,7 @@
 session_start();
 header('Content-Type: application/json');
 
-require "config/db.php";
+require "../config/db.php";
 
 $qrdata = $_POST["qrdata"] ?? '';
 $activity_name = $_POST["activity_name"] ?? '';

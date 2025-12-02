@@ -2,10 +2,13 @@
 session_start();
 require '../config/db.php';
 
-if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-    $email = trim($_POST['email']);
-    $password = $_POST['password'];
+if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
+    // --- Clean input ---
+    $email = trim($_POST['email'] ?? '');
+    $password = $_POST['password'] ?? '';
+
+    // --- Validate email ---
     if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
         $_SESSION['login_error'] = "รูปแบบอีเมลไม่ถูกต้อง";
         header("Location: login.php");
@@ -13,47 +16,64 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     }
 
     try {
-        $stmt = $pdo->prepare("SELECT * FROM users WHERE email = ?");
+        // --- Check if email exists ---
+        $stmt = $pdo->prepare("SELECT id, username, email, password, role 
+                               FROM users 
+                               WHERE email = ? LIMIT 1");
         $stmt->execute([$email]);
         $user = $stmt->fetch(PDO::FETCH_ASSOC);
 
-        $loginSuccess = false;
-
-        if ($user) {
-            // First, try hashed password
-            if (password_verify($password, $user['password'])) {
-                $loginSuccess = true;
-            } 
-            // If hashed check fails, allow plain password for admin or staff only
-            elseif (in_array($user['role'], ['admin', 'staff']) && $password === $user['password']) {
-                $loginSuccess = true;
-            }
+        // If no user found
+        if (!$user || empty($user['email'])) {
+            $_SESSION['login_error'] = "ไม่พบบัญชีผู้ใช้นี้ในระบบ";
+            header("Location: login.php");
+            exit;
         }
 
-        if ($loginSuccess) {
-            $_SESSION['user'] = [
-                'id' => $user['id'],
-                'username' => $user['username'],
-                'email' => $user['email'],
-                'role' => $user['role'],
-            ];
+        $loginSuccess = false;
 
-            if ($user['role'] === 'admin') {
-                header("Location: ../admin/index.php");
-            } elseif ($user['role'] === 'staff') {
-                header("Location: ../staff/index.php");
-            } else {
-                header("Location: ../index.php");
-            }
-            exit;
-        } else {
+        // 1) Try hashed password first
+        if (password_verify($password, $user['password'])) {
+            $loginSuccess = true;
+        }
+        // 2) Allow plain passwords only for admin/staff legacy accounts
+        elseif (in_array($user['role'], ['admin', 'staff']) && $password === $user['password']) {
+            $loginSuccess = true;
+        }
+
+        // If password incorrect
+        if (!$loginSuccess) {
             $_SESSION['login_error'] = "อีเมลหรือรหัสผ่านไม่ถูกต้อง";
             header("Location: login.php");
             exit;
         }
 
+        // --- Login OK: set session ---
+        $_SESSION['user'] = [
+            'id'       => $user['id'],
+            'username' => $user['username'],
+            'email'    => $user['email'],
+            'role'     => $user['role']
+        ];
+
+        // --- Redirect by role ---
+        switch ($user['role']) {
+            case 'admin':
+                header("Location: ../admin/index.php");
+                break;
+
+            case 'staff':
+                header("Location: ../staff/index.php");
+                break;
+
+            default:
+                header("Location: ../index.php");
+                break;
+        }
+        exit;
+
     } catch (PDOException $e) {
-        $_SESSION['login_error'] = "เกิดข้อผิดพลาดในการเข้าสู่ระบบ";
+        $_SESSION['login_error'] = "ระบบมีปัญหา กรุณาลองใหม่อีกครั้ง";
         header("Location: login.php");
         exit;
     }

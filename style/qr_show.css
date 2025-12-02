@@ -1,0 +1,121 @@
+body {
+    font-family: 'Prompt', sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: white;
+    color: #333;
+
+    /* FULL PAGE CENTER FIX */
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+/* Wrapper to center content */
+.page-wrapper {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    /* horizontal center */
+    align-items: center;
+    /* vertical center */
+    padding-bottom: 80px;
+    /* keeps bottom nav from overlapping */
+}
+
+.qr-container {
+    width: 100%;
+    max-width: 400px;
+    padding: 20px;
+    box-sizing: border-box;
+}
+
+/* Header */
+.app-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-bottom: 20px;
+}
+
+.app-header h1 {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: #2c3e50;
+    margin: 0;
+    flex-grow: 1;
+    text-align: center;
+}
+
+/* Logout Button */
+.logout-btn {
+    background: none;
+    border: none;
+    font-size: 28px;
+    cursor: pointer;
+    opacity: 0.8;
+    margin-right: auto;
+}
+
+.logout-btn:hover {
+    opacity: 1;
+}
+
+/* QR Card */
+.qr-content-card {
+    background-color: #ffffff;
+    padding: 30px;
+    border-radius: 12px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+    text-align: center;
+}
+
+.qr-content-card h2 {
+    font-size: 1.25rem;
+    font-weight: 600;
+    color: #34495e;
+    margin-top: 0;
+    margin-bottom: 25px;
+}
+
+.qr-code-display {
+    padding: 15px;
+    background-color: #ecf0f1;
+    border-radius: 8px;
+    display: inline-block;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+    margin-bottom: 30px;
+}
+
+.qr-image {
+    width: 200px;
+    height: 200px;
+    display: block;
+}
+
+.instruction-text {
+    font-size: 0.9rem;
+    color: #7f8c8d;
+    margin-bottom: 30px;
+}
+
+.status-link {
+    display: inline-flex;
+    align-items: center;
+    padding: 10px 20px;
+    background-color: #8FBF72;
+    color: white;
+    text-decoration: none;
+    border-radius: 25px;
+    font-weight: 600;
+    transition: background-color 0.3s, transform 0.1s;
+}
+
+.status-link .icon {
+    margin-right: 8px;
+}
+
+.status-link:hover {
+    background-color: #8FBF72;
+    transform: translateY(-1px);
+}

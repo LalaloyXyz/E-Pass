@@ -1,0 +1,124 @@
+:root {
+    --green-main: #8FBF72;
+    --green-dark: #6E9F56;
+    --green-bg: #f3f8f2;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: var(--green-bg);
+    font-family: 'Prompt', sans-serif;
+}
+
+.card {
+    width: 90%;
+    max-width: 380px;
+    padding: 32px 24px;
+    border-radius: 18px;
+    background: #ffffff;
+    box-shadow: 0 6px 20px rgba(0,0,0,0.08);
+    text-align: center;
+}
+
+h2 {
+    margin-bottom: 20px;
+    color: var(--green-dark);
+    font-weight: 500;
+    font-size: 22px;
+}
+
+.input-group {
+    margin-bottom: 18px;
+    text-align: left;
+    position: relative;
+}
+
+label {
+    font-size: 14px;
+    color: #4a4a4a;
+    display: block;
+    margin-bottom: 6px;
+}
+
+.input-wrapper {
+    position: relative;
+}
+
+.input-wrapper input {
+    width: 100%;
+    padding: 12px 40px 12px 12px; /* เผื่อให้ไอคอนขวา */
+    border-radius: 10px;
+    border: 1.5px solid #cbd5c0;
+    outline: none;
+    font-size: 15px;
+    transition: 0.2s;
+}
+
+.input-wrapper input:focus {
+    border-color: var(--green-main);
+    box-shadow: 0 0 0 2px rgba(143,191,114,0.25);
+}
+
+ion-icon.toggle-icon {
+    position: absolute;
+    right: 12px;
+    top: 50%;
+    transform: translateY(-50%);
+    cursor: pointer;
+    font-size: 20px;
+    color: #6E9F56;
+}
+
+button {
+    width: 100%;
+    padding: 12px;
+    background: var(--green-main);
+    color: white;
+    border: none;
+    border-radius: 10px;
+    font-size: 16px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: 0.25s;
+}
+
+button:hover {
+    background: var(--green-dark);
+    transform: translateY(-1px);
+}
+
+a {
+    color: var(--green-dark);
+    font-weight: 500;
+    text-decoration: none;
+}
+
+a:hover {
+    text-decoration: underline;
+}
+
+.message {
+    padding: 10px;
+    border-radius: 8px;
+    margin-bottom: 15px;
+    font-size: 14px;
+}
+
+.error-box {
+    background: #ffe2e2;
+    color: #cc0000;
+}
+
+.success-box {
+    background: #e0f5e0;
+    color: #2d7a2d;
+}

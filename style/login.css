@@ -1,0 +1,124 @@
+:root {
+    --green-main: #8FBF72;
+    --green-dark: #6E9F56;
+    --green-bg: #f3f8f2;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: var(--green-bg);
+    font-family: 'Prompt', sans-serif;
+}
+
+.card {
+    width: 90%;
+    max-width: 360px;
+    padding: 28px 24px;
+    border-radius: 18px;
+    background: #ffffff;
+    box-shadow: 0 6px 20px rgba(0,0,0,0.08);
+    text-align: center;
+    box-sizing: border-box;
+}
+
+/* Heading */
+h2 {
+    margin-bottom: 20px;
+    color: var(--green-dark);
+    font-weight: 500;
+    font-size: 1.4rem;
+}
+
+/* Error Box */
+.error-box {
+    background: #ffe2e2;
+    color: #cc0000;
+    padding: 10px;
+    border-radius: 8px;
+    margin-bottom: 15px;
+    font-size: 0.85rem;
+    word-break: break-word;
+}
+
+/* Input Group */
+.input-group {
+    margin-bottom: 16px;
+    text-align: left;
+}
+
+label {
+    font-size: 13px;
+    color: #4a4a4a;
+}
+
+input {
+    width: 100%;
+    padding: 12px;
+    margin-top: 6px;
+    border-radius: 10px;
+    border: 1.5px solid #cbd5c0;
+    outline: none;
+    transition: 0.2s;
+    font-size: 0.95rem;
+    box-sizing: border-box;
+}
+
+input:focus {
+    border-color: var(--green-main);
+    box-shadow: 0 0 0 2px rgba(143,191,114,0.25);
+}
+
+/* Toggle Password Icon */
+.input-group div {
+    position: relative;
+}
+
+#toggle-password {
+    position: absolute;
+    right: 10px;
+    top: 50%;
+    transform: translateY(-50%);
+    cursor: pointer;
+    font-size: 20px;
+    color: var(--green-dark);
+}
+
+/* Button */
+button {
+    width: 100%;
+    padding: 12px;
+    background: var(--green-main);
+    color: white;
+    border: none;
+    border-radius: 10px;
+    font-size: 16px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: 0.25s;
+}
+
+button:hover {
+    background: var(--green-dark);
+    transform: translateY(-1px);
+}
+
+/* Signup link */
+.card p {
+    margin-top: 15px;
+    font-size: 0.9rem;
+}
+
+.card a {
+    color: var(--green-dark);
+    font-weight: 500;
+    text-decoration: none;
+}
+
+.card a:hover {
+    text-decoration: underline;
+}

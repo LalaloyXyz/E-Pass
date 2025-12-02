@@ -1,12 +1,12 @@
-<link rel="stylesheet" href="../style/bottom-nav.css">
+<link rel="stylesheet" href="style/bottom-nav.css">
 
 <div class="bottom-nav">
-  <a href="../index.php">
+  <a href="index.php">
     <ion-icon name="home-sharp"></ion-icon>
     <div>Home</div>
   </a>
 
-  <a href="../qr_show.php">
+  <a href="qr_show.php">
     <ion-icon name="qr-code-sharp"></ion-icon>
     <div>QR</div>
   </a>
